@@ -9,8 +9,9 @@ services:
         protocol: tcp
         mode: host
     environment:
-      - POSTGRES_PASSWORD=123456
-      - PGDATA=/var/lib/postgresql/data
+      POSTGRES_DB: demo
+      POSTGRES_PASSWORD: 123456
+      PGDATA: /var/lib/postgresql/data
     volumes:
       - ./main:/var/lib/postgresql/data
       - type: tmpfs
