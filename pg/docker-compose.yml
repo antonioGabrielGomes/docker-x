@@ -9,7 +9,6 @@ services:
         protocol: tcp
         mode: host
     environment:
-      POSTGRES_DB: demo
       POSTGRES_PASSWORD: 123456
       PGDATA: /var/lib/postgresql/data
     volumes:
@@ -17,8 +16,3 @@ services:
       - type: tmpfs
         target: /dev/shm
   
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
