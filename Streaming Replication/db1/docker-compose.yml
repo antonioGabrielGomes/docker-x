@@ -1,18 +1,30 @@
-version: '3.6'
+version: '3'
 
 services:
-  db:
+  primary:
     image: postgres:14
-    ports:
-      - target: 5432
-        published: 5432
-        protocol: tcp
-        mode: host
+    restart: always
     environment:
-      POSTGRES_PASSWORD: 123456
-      PGDATA: /var/lib/postgresql/data
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
-      - ./main:/var/lib/postgresql/data
-      - type: tmpfs
-        target: /dev/shm
-  
+      - primary_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  replica:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: primary
+      POSTGRES_PORT: 5432
+      POSTGRES_MASTER_USER: postgres
+      POSTGRES_MASTER_PASSWORD: postgres
+    volumes:
+      - replica_data:/var/lib/postgresql/data
+
+volumes:
+  primary_data:
+  replica_data:
