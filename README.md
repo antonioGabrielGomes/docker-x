@@ -39,6 +39,10 @@ $ docker-compose exec node1
 
 /usr/share/nginx/html;
 
-
-
 $ tail -f /var/log/nginx/nginx-access.log
+
+-----------
+
+### config streaming replication
+
+
