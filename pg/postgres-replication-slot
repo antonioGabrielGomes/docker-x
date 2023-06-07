@@ -1,0 +1,11 @@
+-- criar slot de replicação
+select pg_create_physical_replication_slot('slot_replicacao_main')
+
+-- criar backup pelo pg_basebackup
+pg_basebackup -h main -U userbackup -D /var/lib/postgresql/data -v -P -X s -c fast
+
+primary_conninfo='host=host port=5432 user=user password=password'
+
+--
+
+docker-compose up --force-recreate
