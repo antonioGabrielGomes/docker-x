@@ -9,6 +9,7 @@ services:
     image: nginx
     volumes:
       - ./nginx/config:/etc/nginx/conf.d/
+      - ./nginx/logs:/var/log/nginx/
     ports:
       - 8080:8080
     #networks:
