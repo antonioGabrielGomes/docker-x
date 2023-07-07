@@ -46,3 +46,18 @@ $ tail -f /var/log/nginx/nginx-access.log
 ### config streaming replication
 
 
+
+
+
+############################################################
+ host do nginx
+
+ apt update
+ apt install nginx -y
+ systemctl status nginx
+ 
+
+ ############################################################
+ ssl
+
+ ...
